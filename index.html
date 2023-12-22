@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
-    <link rel="stylesheet" href="reset.css">
+    <!-- <link rel="stylesheet" href="reset.css"> -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,13 +15,13 @@
         <div class="sidebar">
             <h2>Projects</h2>
             <ul class="project-list">
-                <li>Project One</li>
+                <li id="active-project">Project One</li>
                 <li>Project Two</li>
                 <li>Project Three</li>
             </ul>
         </div>
-        <div class="main">
-            <div class="todo-container">
+        <div class="todo-container">
+            <div class="todo">
                 <h3 class="todo-title">Todo One</h3>
                 <p class="todo-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, consectetur corrupti? Non?</p>
                 <!-- 
@@ -30,7 +30,11 @@
                     Tag?
                 -->
             </div>
-            <div class="todo-container">
+            <div class="todo">
+                <h3 class="todo-title">Todo One</h3>
+                <p class="todo-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, consectetur corrupti? Non?</p>
+            </div>
+            <div class="todo">
                 <h3 class="todo-title">Todo One</h3>
                 <p class="todo-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, consectetur corrupti? Non?</p>
             </div>
