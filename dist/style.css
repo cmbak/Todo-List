@@ -5,27 +5,67 @@ body {
 /* Container Styling */
 .container {
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: min-content 85vh;
     gap: 0.5rem;
 }
 
 /* Nav */
 .nav {
     border: 3px solid green;
+    grid-column: 1 / 3;
+}
+
+#title {
+    font-size: 2.5rem;
+    text-align: center;
 }
 
 /* Sidebar */
 .sidebar {
     border: 3px solid red;
+    padding-left: 1rem;
 }
 
-/* Main */
-.main {
+.sidebar h2 {
+    font-size: 1.6rem;
+}
+
+.project-list {
+    list-style-type: none;
+}
+
+.project-list li {
+    font-size: 1.2rem;
+    margin-block: 1rem;
+}
+
+#active-project {
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Todo Container */
+.todo-container {
     border: 3px solid blue;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
 }
 
 /* Todo Styling */
-.todo-container {
+.todo {
     border: 3px solid gold;
+    padding: 1rem;
+    margin: 1rem;
+    /* Want these to be square in future */
+}
+
+.todo-title {
+    font-size: 1.75rem;
+    margin: 1rem 0;
+}
+
+.todo-desc {
+    color: rgb(75, 75, 75);
 }
