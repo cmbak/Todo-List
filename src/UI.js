@@ -1,3 +1,5 @@
+import { createProject } from "./project";
+
 // Should there be a main set project function or?
 
 
@@ -45,6 +47,6 @@ addProjectBtn.addEventListener("click", () => {
         alert("Sorry, please enter a valid project name");
         return false;
     }
-    console.log(projectName);
     toggleBtnFormVisibility();
+    createProject(projectName);
 });
