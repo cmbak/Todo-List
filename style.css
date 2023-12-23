@@ -55,11 +55,11 @@ button {
     color: rgb(87, 0, 0);
 }
 
-.project-list {
+#project-list {
     list-style-type: none;
 }
 
-.project-list li {
+#project-list li {
     font-size: 1.2rem;
     margin-block: 1rem;
 }
