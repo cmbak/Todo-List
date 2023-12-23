@@ -50,9 +50,9 @@ button {
     color: rgb(2, 65, 2);
 }
 
-#cancel {
+#cancel, .delete-project-btn {
     background-color: rgb(235, 83, 83);
-    color: rgb(87, 0, 0);
+    color: rgb(52, 0, 0);
 }
 
 #project-list {
@@ -61,13 +61,27 @@ button {
 
 #project-list li {
     font-size: 1.2rem;
-    margin-block: 1rem;
 }
 
 #active-project {
     font-weight: bold;
     font-style: italic;
 }
+
+.project-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.project-container li {
+    margin: 0 !important;
+}
+
+/* .delete-project-btn {
+    /* height: 100%;
+    align-items: baseline; */
+
 
 /* Todo Container */
 .todo-container {

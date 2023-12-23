@@ -1,16 +1,18 @@
-import { createProject, getProjects } from "./project";
+import { createProject, getProjects, projectsExists } from "./project";
 
 // Should there be a main set project function or?
 
 // Used on first reload to add the projects to the sidebar
 export const displayStoredProjects = () => {
-    const projects = getProjects();
-    console.log(projects);
-
-    // TODO HOW TO KNOW WHICH PROJECT IS ACTIVE? LOCAL STORAGE?
-    projects.forEach(project => {
-        addProjectToTab(project);
-    });
+    if (projectsExists()) {
+        const projects = getProjects();
+        console.log(projects);
+    
+        // TODO HOW TO KNOW WHICH PROJECT IS ACTIVE? LOCAL STORAGE?
+        projects.forEach(project => {
+            addProjectToTab(project);
+        });
+    }
 }
 
 
@@ -18,7 +20,7 @@ export const displayStoredProjects = () => {
 
 export const changeActiveProject = () => {
     localStorage.setItem("activeProject", document.getElementById("active-project"));
-    console.log(localStorage.getItem("activeProject"));
+    // console.log(localStorage.getItem("activeProject"));
 }
 
 
@@ -71,10 +73,17 @@ const addProjectToTab = projectName => {
     const projectList = document.getElementById("project-list");
     
     const projectElement = document.createElement("li");
+    const projectContainer = document.createElement("div");
     const projectText = document.createTextNode(projectName);
+    const deleteBtn = document.createElement("button");
 
+    projectContainer.classList.add('project-container');
     projectElement.appendChild(projectText);
-    projectList.insertBefore(projectElement, createProjectBtn);
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("delete-project-btn");
+    projectContainer.appendChild(projectElement)
+    projectContainer.appendChild(deleteBtn);
+    projectList.insertBefore(projectContainer, createProjectBtn);
 }
 
 displayStoredProjects();
