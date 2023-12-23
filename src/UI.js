@@ -2,6 +2,17 @@ import { createProject, getProjects } from "./project";
 
 // Should there be a main set project function or?
 
+// Used on first reload to add the projects to the sidebar
+export const displayStoredProjects = () => {
+    const projects = getProjects();
+    console.log(projects);
+
+    // TODO HOW TO KNOW WHICH PROJECT IS ACTIVE? LOCAL STORAGE?
+    projects.forEach(project => {
+        addProjectToTab(project);
+    });
+}
+
 
 // Change active project - should be in diff file?
 
@@ -66,26 +77,4 @@ const addProjectToTab = projectName => {
     projectList.insertBefore(projectElement, createProjectBtn);
 }
 
-// clears the projects from the tab
-const clearProjects = () => {
-    const projectList = document.getElementById("project-list");
-    projectList.replaceChildren();
-}
-
-
-// Loop over all the projects in local storage
-// add each to dom
-// if empty, untitled project
-
-// const updateProjectsList = () => {
-//     const projectList = document.getElementById("project-list");
-    
-//     clearProjects();
-//     // TODO HOW TO WORK OUT ACTIVE PROJECT?
-//     let projects = getProjects();
-//     projects.forEach(project => {
-//         projectList.appendChild(project)
-//         console.log(project);
-//     });
-// }
-
+displayStoredProjects();
