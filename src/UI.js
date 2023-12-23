@@ -1,4 +1,4 @@
-import { createProject } from "./project";
+import { createProject, getProjects } from "./project";
 
 // Should there be a main set project function or?
 
@@ -49,4 +49,43 @@ addProjectBtn.addEventListener("click", () => {
     }
     toggleBtnFormVisibility();
     createProject(projectName);
+    addProjectToTab(projectName);
+    // updateProjectsList();
 });
+
+// Project tab functionality
+
+// Adds project to project tab
+const addProjectToTab = projectName => {
+    const projectList = document.getElementById("project-list");
+    
+    const projectElement = document.createElement("li");
+    const projectText = document.createTextNode(projectName);
+
+    projectElement.appendChild(projectText);
+    projectList.insertBefore(projectElement, createProjectBtn);
+}
+
+// clears the projects from the tab
+const clearProjects = () => {
+    const projectList = document.getElementById("project-list");
+    projectList.replaceChildren();
+}
+
+
+// Loop over all the projects in local storage
+// add each to dom
+// if empty, untitled project
+
+// const updateProjectsList = () => {
+//     const projectList = document.getElementById("project-list");
+    
+//     clearProjects();
+//     // TODO HOW TO WORK OUT ACTIVE PROJECT?
+//     let projects = getProjects();
+//     projects.forEach(project => {
+//         projectList.appendChild(project)
+//         console.log(project);
+//     });
+// }
+
