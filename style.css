@@ -2,6 +2,16 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.hidden {
+    display: none;
+}
+
+button {
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+}
+
 /* Container Styling */
 .container {
     display: grid;
@@ -29,6 +39,20 @@ body {
 
 .sidebar h2 {
     font-size: 1.6rem;
+}
+
+#add-project-form {
+    border: 3px solid orange;
+}
+
+#add-project-btn {
+    background-color: rgb(126, 211, 126);
+    color: rgb(2, 65, 2);
+}
+
+#cancel {
+    background-color: rgb(235, 83, 83);
+    color: rgb(87, 0, 0);
 }
 
 .project-list {
