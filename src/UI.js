@@ -1,4 +1,4 @@
-import { createProject, getProjects, projectsExists, checkIfProjectExists } from "./project";
+import { createProject, getProjects, projectsExists, checkIfProjectExists, deleteProject } from "./project";
 
 // Should there be a main set project function or?
 
@@ -6,12 +6,22 @@ import { createProject, getProjects, projectsExists, checkIfProjectExists } from
 export const displayStoredProjects = () => {
     if (projectsExists()) {
         const projects = getProjects();
-        console.log(projects);
+        // console.log(projects);
     
+        clearProjectsTab();
+
         // TODO HOW TO KNOW WHICH PROJECT IS ACTIVE? LOCAL STORAGE?
         projects.forEach(project => {
             addProjectToTab(project);
         });
+    }
+}
+
+// Gets rid of all the project HTML (NOT FROM LOCAL STORAGE)
+const clearProjectsTab = () => {
+    const listOfProjects = document.getElementById("projects");
+    while (listOfProjects.firstChild) {
+        listOfProjects.removeChild(listOfProjects.firstChild);
     }
 }
 
@@ -74,6 +84,7 @@ addProjectBtn.addEventListener("click", () => {
 // Adds project to project tab
 const addProjectToTab = projectName => {
     const projectList = document.getElementById("project-list");
+    const listOfProjects = document.getElementById("projects");
     
     const projectElement = document.createElement("li");
     const projectContainer = document.createElement("div");
@@ -86,14 +97,30 @@ const addProjectToTab = projectName => {
     deleteBtn.classList.add("delete-project-btn");
     projectContainer.appendChild(projectElement)
     projectContainer.appendChild(deleteBtn);
-    projectList.insertBefore(projectContainer, createProjectBtn);
+    // projectList.insertBefore(projectContainer, createProjectBtn);
 
     // TODO
     // SHOULD THE DELETE BUTTON BE INSIDE A FORM
     // AND THE VALUE OF THE DELETE BUTTON OR SUBMIT OF THE FORM IS THE NAME OF THE PROJECT?
-
+    projectContainer.appendChild(createDeleteProjectForm());
+    listOfProjects.appendChild(projectContainer);
 }
 
+// Delete project form (fn returns a html form)
+const createDeleteProjectForm = (projectName) => {
+    const form = document.createElement("form");
+    const deleteBtn = document.createElement("button");    
+    form.appendChild(deleteBtn);
+
+    deleteBtn.innerText = "Delete";
+    deleteBtn.value = projectName;
+    deleteBtn.addEventListener("click", event => {
+        event.preventDefault();
+        deleteProject(projectName);
+        displayStoredProjects();
+    });
+    return form;
+}
 // Delete project btn 
 
 

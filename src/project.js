@@ -27,3 +27,14 @@ export const checkIfProjectExists = (projectName) => {
     }
     return false;
 }
+
+// Deletes a specified project from local storage
+export const deleteProject = (projectName) => {
+    if(projectsExists()) {
+        let projects = getProjects();
+        const index = projects.indexOf(projectName);
+        projects.splice(index, 1);
+        console.log(projects);
+        localStorage.setItem("projects", JSON.stringify(projects));
+    }
+}
