@@ -34,7 +34,6 @@ export const deleteProject = (projectName) => {
         let projects = getProjects();
         const index = projects.indexOf(projectName);
         projects.splice(index, 1);
-        console.log(projects);
         localStorage.setItem("projects", JSON.stringify(projects));
     }
 }

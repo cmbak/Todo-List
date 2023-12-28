@@ -5,7 +5,6 @@
 
 // console.log(`The current date is ${formattedDate}`);
 
-// TODO - Add delete project button functionality
 // TODO - Add todo button fn
     // TODO - Adds todo to localstorage
     // TODO - Todo should be assigned to a specific project

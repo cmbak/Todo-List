@@ -83,7 +83,6 @@ addProjectBtn.addEventListener("click", () => {
 
 // Adds project to project tab
 const addProjectToTab = projectName => {
-    const projectList = document.getElementById("project-list");
     const listOfProjects = document.getElementById("projects");
     
     const projectElement = document.createElement("li");
@@ -93,16 +92,9 @@ const addProjectToTab = projectName => {
 
     projectContainer.classList.add('project-container');
     projectElement.appendChild(projectText);
-    deleteBtn.textContent = "Delete";
-    deleteBtn.classList.add("delete-project-btn");
     projectContainer.appendChild(projectElement)
-    projectContainer.appendChild(deleteBtn);
-    // projectList.insertBefore(projectContainer, createProjectBtn);
-
-    // TODO
-    // SHOULD THE DELETE BUTTON BE INSIDE A FORM
-    // AND THE VALUE OF THE DELETE BUTTON OR SUBMIT OF THE FORM IS THE NAME OF THE PROJECT?
     projectContainer.appendChild(createDeleteProjectForm());
+
     listOfProjects.appendChild(projectContainer);
 }
 
@@ -114,6 +106,7 @@ const createDeleteProjectForm = (projectName) => {
 
     deleteBtn.innerText = "Delete";
     deleteBtn.value = projectName;
+    deleteBtn.classList.add("delete-project-btn");
     deleteBtn.addEventListener("click", event => {
         event.preventDefault();
         deleteProject(projectName);
