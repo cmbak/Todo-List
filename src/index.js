@@ -11,6 +11,7 @@
 // TODO - Display todos in project
 // TODO - Update todos in view depending on which project is selected
 
+// TODO -  Have a default project thing e.g untitled
 
 /*
     When someone creates a todo item
@@ -21,6 +22,7 @@
 
 */
 
-import { changeActiveProject, toggleCreateProject } from "./UI";
+import { changeActiveProject, displayStoredProjects } from "./UI";
+displayStoredProjects();
 changeActiveProject();
 // toggleCreateProject();

@@ -114,7 +114,8 @@ const createDeleteProjectForm = (projectName) => {
     });
     return form;
 }
-// Delete project btn 
 
+// Create todo btn functionality
+const crateTodoBtn = document.getElementById("create-todo-btn");
 
-displayStoredProjects();
+// Toggles display of create todo button + respective form
