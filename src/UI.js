@@ -1,4 +1,4 @@
-import { createProject, getProjects, projectsExists } from "./project";
+import { createProject, getProjects, projectsExists, checkIfProjectExists } from "./project";
 
 // Should there be a main set project function or?
 
@@ -59,6 +59,9 @@ addProjectBtn.addEventListener("click", () => {
     if (projectName == "") {
         alert("Sorry, please enter a valid project name");
         return false;
+    } else if (checkIfProjectExists(projectName)) {
+        alert("Sorry, a project with that name already exists!");
+        return false;
     }
     toggleBtnFormVisibility();
     createProject(projectName);
@@ -92,6 +95,6 @@ const addProjectToTab = projectName => {
 }
 
 // Delete project btn 
-// const deleteProjectBtn = document.get
+
 
 displayStoredProjects();

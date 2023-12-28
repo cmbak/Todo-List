@@ -19,3 +19,11 @@ export const getProjects = () => {
         return JSON.parse(localStorage.getItem("projects"));
     }
 }
+
+// Returns true/false depending on whether a project with a given name is exists
+export const checkIfProjectExists = (projectName) => {
+    if (projectsExists()) {
+        return getProjects().includes(projectName);
+    }
+    return false;
+}
