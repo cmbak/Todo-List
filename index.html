@@ -17,7 +17,6 @@
             <ul id="project-list">
                 <!-- <li id="active-project">Project One</li> -->
                 <div id="projects">
-                    <h3>test</h3>
                 </div>
                 <button id="create-project-btn">Create Project</button>
                 <div id='add-project-form' class="hidden">
@@ -28,15 +27,15 @@
             </ul>
         </div>
         <div class="todo-container">
-            <div class="todo">
+            <!-- <div class="todo">
                 <h3 class="todo-title">Todo One</h3>
-                <p class="todo-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, consectetur corrupti? Non?</p>
+                <p class="todo-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, consectetur corrupti? Non?</p> -->
                 <!-- 
                     Due Date
                     Priority
                     Tag?
                 -->
-            </div>
+            <!-- </div>
             <div class="todo">
                 <h3 class="todo-title">Todo One</h3>
                 <p class="todo-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, consectetur corrupti? Non?</p>
@@ -44,7 +43,18 @@
             <div class="todo">
                 <h3 class="todo-title">Todo One</h3>
                 <p class="todo-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, consectetur corrupti? Non?</p>
-            </div>
+            </div> -->
+            <button id="create-todo-btn">Create Todo</button>
+            <form id="create-todo-form" hidden>
+                <input type="text" name="todo-title" id="todo-form-title" placeholder="Name of todo" required>
+                <textarea name="todo-desc" id="todo-form-desc" cols="30" rows="10" placeholder="Optional description..."></textarea>
+                <select name="todo-priority" id="todo-priority" required>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <button type="submit" id="add-todo-btn">Create Todo</button>
+            </form>
         </div>
     </div>
     <script src="main.js"></script>
