@@ -15,7 +15,6 @@ export const displayStoredProjects = () => {
     }
 }
 
-
 // Change active project - should be in diff file?
 
 export const changeActiveProject = () => {
@@ -49,6 +48,7 @@ export const displayProjectForm = () => { // TODO rename to toggle
     document.getElementById("project-input").value = "";
 };
 
+// Cancel project btn
 const cancelBtn = document.getElementById("cancel");
 cancelBtn.addEventListener("click", toggleBtnFormVisibility);
 
@@ -84,6 +84,14 @@ const addProjectToTab = projectName => {
     projectContainer.appendChild(projectElement)
     projectContainer.appendChild(deleteBtn);
     projectList.insertBefore(projectContainer, createProjectBtn);
+
+    // TODO
+    // SHOULD THE DELETE BUTTON BE INSIDE A FORM
+    // AND THE VALUE OF THE DELETE BUTTON OR SUBMIT OF THE FORM IS THE NAME OF THE PROJECT?
+
 }
+
+// Delete project btn 
+// const deleteProjectBtn = document.get
 
 displayStoredProjects();
