@@ -1,14 +1,19 @@
+import { Project } from "./project";
+
 export const projectsExists = () => {
     return localStorage.getItem("projects") !== null;
 }
 
 // Adds new project to local storage and displays it in project tab
+
+// TODO CHANGE THIS SO THAT PROJECTS HAS AN ARRAY OF PROJECT OBJECTS!
+
 export const createProject = projectName => {
     if (!projectsExists()) {
-        localStorage.setItem("projects", JSON.stringify([projectName]));
+        localStorage.setItem("projects", JSON.stringify([new Project(projectName)]));
     } else {
         let updatedProjectArr = JSON.parse(localStorage.getItem("projects"));
-        updatedProjectArr.push(projectName);
+        updatedProjectArr.push(new Project(projectName));
         localStorage.setItem("projects", JSON.stringify(updatedProjectArr));
     }
 }
