@@ -138,6 +138,14 @@ createTodoBtn.addEventListener("click", event => {
 // should set value of submit to current active project
 // TODO - Make sure that project isn't active
 const setActiveProject = (projectName, projectNameButton) => {
+    clearActiveProjects();
     projectNameButton.classList.toggle("active-project");
     storeActiveProject(projectName);
+}
+
+// Gets rid of the active project class from project buttons
+const clearActiveProjects = () => {
+    Array.prototype.forEach.call(document.getElementsByClassName("project-name-btn"), projectBtn => {
+        projectBtn.classList.remove("active-project");
+    });
 }
