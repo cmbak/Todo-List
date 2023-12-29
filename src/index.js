@@ -27,7 +27,6 @@
 
 */
 
-import { changeActiveProject, displayStoredProjects } from "./UI";
+import { displayStoredProjects } from "./UI";
 displayStoredProjects();
-changeActiveProject();
 // toggleCreateProject();

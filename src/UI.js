@@ -34,15 +34,6 @@ const clearProjectsTab = () => {
     }
 }
 
-// Change active project - should be in diff file?
-
-export const changeActiveProject = () => {
-    console.log(getActiveProject());
-    // localStorage.setItem("activeProject", document.getElementById("active-project"));
-    // console.log(localStorage.getItem("activeProject"));
-}
-
-
 // Toggles the visibility of the create project button and project form
 function toggleBtnFormVisibility() {
     toggleCreateProject();
@@ -101,6 +92,9 @@ const addProjectToTab = projectName => {
     const projectContainer = document.createElement("div");
     const projectText = document.createTextNode(projectName);
 
+    if (projectName == getActiveProject()) {
+        setActiveProject(projectName, projectNameButton);
+    }
     projectNameButton.classList.add("project-name-btn");
     projectNameButton.addEventListener("click", () => setActiveProject(projectName, projectNameButton));
     projectElement.classList.add("project-name");
@@ -144,6 +138,6 @@ createTodoBtn.addEventListener("click", event => {
 // should set value of submit to current active project
 // TODO - Make sure that project isn't active
 const setActiveProject = (projectName, projectNameButton) => {
-    projectNameButton.classList.toggle("active-project")
+    projectNameButton.classList.toggle("active-project");
     storeActiveProject(projectName);
 }
