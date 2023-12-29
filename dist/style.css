@@ -78,6 +78,15 @@ button {
     margin: 0 !important;
 }
 
+.project-name-btn {
+    border: none;
+    padding-right: 2rem;
+}
+
+.active-project {
+    font-weight: bold;
+}
+
 /* .delete-project-btn {
     /* height: 100%;
     align-items: baseline; */

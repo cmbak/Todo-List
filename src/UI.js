@@ -1,4 +1,4 @@
-import { createProject, getProjects, projectsExists, checkIfProjectExists, deleteProject } from "./project";
+import { createProject, getProjects, projectsExists, checkIfProjectExists, deleteProject, storeActiveProject, getActiveProject } from "./project";
 
 // Should there be a main set project function or?
 
@@ -14,6 +14,15 @@ export const displayStoredProjects = () => {
         projects.forEach(project => {
             addProjectToTab(project);
         });
+
+        // ADD TO FUNCTIN - SET ACOFA
+        // let test = document.getElementsByClassName(".project-name"); // FIXME USE SOMETHING ELSE
+        // console.log(test);
+        // test.forEach(projectElement => {
+        //     console.log(projectElement)
+        //     // projectElement.addEventListener("click", setActiveProject(projectName));
+        // });
+
     }
 }
 
@@ -28,7 +37,8 @@ const clearProjectsTab = () => {
 // Change active project - should be in diff file?
 
 export const changeActiveProject = () => {
-    localStorage.setItem("activeProject", document.getElementById("active-project"));
+    console.log(getActiveProject());
+    // localStorage.setItem("activeProject", document.getElementById("active-project"));
     // console.log(localStorage.getItem("activeProject"));
 }
 
@@ -45,7 +55,8 @@ const createProjectBtn = document.getElementById("create-project-btn");
 createProjectBtn.addEventListener("click", toggleBtnFormVisibility)
 
 
-// Display the form for creating a project
+// FIXME DOES THIS NEED TO BE A SEPARATE FN?
+// Display the form for creating a project 
 export const toggleCreateProject = () => {
     createProjectBtn.classList.toggle("hidden");
 }
@@ -86,15 +97,19 @@ const addProjectToTab = projectName => {
     const listOfProjects = document.getElementById("projects");
     
     const projectElement = document.createElement("li");
+    const projectNameButton = document.createElement("button");
     const projectContainer = document.createElement("div");
     const projectText = document.createTextNode(projectName);
-    const deleteBtn = document.createElement("button");
 
+    projectNameButton.classList.add("project-name-btn");
+    projectNameButton.addEventListener("click", () => setActiveProject(projectName, projectNameButton));
+    projectElement.classList.add("project-name");
+    projectElement.appendChild(projectNameButton);
     projectContainer.classList.add('project-container');
-    projectElement.appendChild(projectText);
-    projectContainer.appendChild(projectElement)
+    projectContainer.appendChild(projectElement);
     projectContainer.appendChild(createDeleteProjectForm());
 
+    projectNameButton.appendChild(projectText);
     listOfProjects.appendChild(projectContainer);
 }
 
@@ -116,6 +131,19 @@ const createDeleteProjectForm = (projectName) => {
 }
 
 // Create todo btn functionality
-const crateTodoBtn = document.getElementById("create-todo-btn");
+const createTodoBtn = document.getElementById("create-todo-btn");
+createTodoBtn.addEventListener("click", event => {
+    event.preventDefault();
+    const form = document.getElementById("create-todo-form");
+    createTodoBtn.classList.toggle("hidden");
+    form.classList.toggle("hidden");
 
-// Toggles display of create todo button + respective form
+    // createTodo(formDetails);
+})
+
+// should set value of submit to current active project
+// TODO - Make sure that project isn't active
+const setActiveProject = (projectName, projectNameButton) => {
+    projectNameButton.classList.toggle("active-project")
+    storeActiveProject(projectName);
+}

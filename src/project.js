@@ -37,3 +37,13 @@ export const deleteProject = (projectName) => {
         localStorage.setItem("projects", JSON.stringify(projects));
     }
 }
+
+// Stores given project name as the active project
+export const storeActiveProject = (projectName) => {
+    localStorage.setItem("activeProject", projectName);
+}
+
+// Gets the active project from local storage
+export const getActiveProject = () => {
+    return localStorage.getItem("activeProject");
+}
