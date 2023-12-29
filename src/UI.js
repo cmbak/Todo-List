@@ -1,28 +1,24 @@
 import { createProject, getProjects, projectsExists, checkIfProjectExists, deleteProject, storeActiveProject, getActiveProject } from "./project";
 
+//
+//  put event listeners here or?
+//
+//
+//
+
+
 // Should there be a main set project function or?
 
 // Used on first reload to add the projects to the sidebar
 export const displayStoredProjects = () => {
     if (projectsExists()) {
         const projects = getProjects();
-        // console.log(projects);
     
         clearProjectsTab();
 
-        // TODO HOW TO KNOW WHICH PROJECT IS ACTIVE? LOCAL STORAGE?
         projects.forEach(project => {
             addProjectToTab(project);
         });
-
-        // ADD TO FUNCTIN - SET ACOFA
-        // let test = document.getElementsByClassName(".project-name"); // FIXME USE SOMETHING ELSE
-        // console.log(test);
-        // test.forEach(projectElement => {
-        //     console.log(projectElement)
-        //     // projectElement.addEventListener("click", setActiveProject(projectName));
-        // });
-
     }
 }
 
@@ -125,21 +121,21 @@ const createDeleteProjectForm = (projectName) => {
 }
 
 // Create todo btn functionality
-const createTodoBtn = document.getElementById("create-todo-btn");
-createTodoBtn.addEventListener("click", event => {
-    event.preventDefault();
-    const form = document.getElementById("create-todo-form");
-    createTodoBtn.classList.toggle("hidden");
-    form.classList.toggle("hidden");
+// const createTodoBtn = document.getElementById("create-todo-btn");
+// createTodoBtn.addEventListener("click", event => {
+//     event.preventDefault();
+//     const form = document.getElementById("create-todo-form");
+//     createTodoBtn.classList.toggle("hidden");
+//     form.classList.toggle("hidden");
 
-    // createTodo(formDetails);
-})
+//     // createTodo(formDetails);
+// })
 
 // should set value of submit to current active project
-// TODO - Make sure that project isn't active
 const setActiveProject = (projectName, projectNameButton) => {
     clearActiveProjects();
     projectNameButton.classList.toggle("active-project");
+    addTodoFormsContainer(projectName);
     storeActiveProject(projectName);
 }
 
@@ -147,5 +143,32 @@ const setActiveProject = (projectName, projectNameButton) => {
 const clearActiveProjects = () => {
     Array.prototype.forEach.call(document.getElementsByClassName("project-name-btn"), projectBtn => {
         projectBtn.classList.remove("active-project");
+    });
+}
+
+// Adds the create todo forms to the todo container
+const addTodoFormsContainer = (projectName) => {
+    const todoContainer = document.getElementById("todo-container");
+    todoContainer.innerHTML = `
+        <button id="create-todo-btn">Create Todo</button>
+        <form id="create-todo-form" class="hidden">
+            <input type="text" name="todo-title" id="todo-form-title" placeholder="Name of todo" required>
+            <textarea name="todo-desc" id="todo-form-desc" cols="30" rows="10" placeholder="Optional description..."></textarea>
+            <select name="todo-priority" id="todo-priority" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <button type="submit" id="add-todo-btn" value="${projectName}">Create Todo</button>
+        </form>
+    `;
+    const createTodoBtn = document.getElementById("create-todo-btn");
+    createTodoBtn.addEventListener("click", event => {
+        event.preventDefault();
+        const form = document.getElementById("create-todo-form");
+        createTodoBtn.classList.toggle("hidden");
+        form.classList.toggle("hidden");
+
+        // createTodo(formDetails);
     });
 }
