@@ -1,3 +1,5 @@
+import { assignTodoToProject } from "./project_ls";
+
 class Todo {
     constructor(title, description, dueDate, priority) {
         this.title = title;

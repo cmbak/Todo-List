@@ -51,9 +51,16 @@ export const getActiveProject = () => {
     return localStorage.getItem("activeProject");
 }
 
+// Gets a project with the given name
+const getProjectWithName = (projectName) => {
+    const projects = JSON.parse(localStorage.getItem("projects"));
+    return projects.find((proj) => proj.projectName == projectName);
+}
+
 // Assigns a todo to a project - given that project exists
 export const assignTodoToProject = (todo, projectName) => {
-    // could create own project object thing?
-    // has name of project
-    // and array of todos
+    // get the project with the name project name
+    // and update todo
+    const project = getProjectWithName(projectName);
+    project.addTodo(todo)
 }
