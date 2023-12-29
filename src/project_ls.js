@@ -1,13 +1,10 @@
 import { Project } from "./project";
 
 export const projectsExists = () => {
-    return localStorage.getItem("projects") !== null;
+    return localStorage.getItem("projects") !== null && localStorage.getItem("projects").length > 0; // is right condition valid?
 }
 
 // Adds new project to local storage and displays it in project tab
-
-// TODO CHANGE THIS SO THAT PROJECTS HAS AN ARRAY OF PROJECT OBJECTS!
-
 export const createProject = projectName => {
     if (!projectsExists()) {
         localStorage.setItem("projects", JSON.stringify([new Project(projectName)]));
@@ -38,10 +35,9 @@ export const checkIfProjectExists = (projectName) => {
 // Deletes a specified project from local storage
 export const deleteProject = (projectName) => {
     if(projectsExists()) {
-        let projects = getProjects();
-        const index = projects.indexOf(projectName);
-        projects.splice(index, 1);
-        localStorage.setItem("projects", JSON.stringify(projects));
+        let projects = JSON.parse(localStorage.getItem("projects"))
+        const updatedProjects = projects.filter((proj) => proj.projectName != projectName);
+        localStorage.setItem("projects", JSON.stringify(updatedProjects));
     }
 }
 

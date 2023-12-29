@@ -98,7 +98,7 @@ const addProjectToTab = projectName => {
     projectElement.appendChild(projectNameButton);
     projectContainer.classList.add('project-container');
     projectContainer.appendChild(projectElement);
-    projectContainer.appendChild(createDeleteProjectForm());
+    projectContainer.appendChild(createDeleteProjectForm(projectName));
 
     projectNameButton.appendChild(projectText);
     listOfProjects.appendChild(projectContainer);
