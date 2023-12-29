@@ -1,4 +1,5 @@
-import { createProject, getProjects, projectsExists, checkIfProjectExists, deleteProject, storeActiveProject, getActiveProject } from "./project";
+import { createProject, getProjects, projectsExists, checkIfProjectExists, deleteProject, storeActiveProject, getActiveProject } from "./project_ls";
+import { createTodo } from "./todo";
 
 //
 //  put event listeners here or?
@@ -147,27 +148,38 @@ const clearActiveProjects = () => {
 }
 
 // Adds the create todo forms to the todo container
+// TODO - ADD LABELS
 const addTodoFormsContainer = (projectName) => {
     const todoContainer = document.getElementById("todo-container");
     todoContainer.innerHTML = `
         <button id="create-todo-btn">Create Todo</button>
         <form id="create-todo-form" class="hidden">
-            <input type="text" name="todo-title" id="todo-form-title" placeholder="Name of todo" required>
-            <textarea name="todo-desc" id="todo-form-desc" cols="30" rows="10" placeholder="Optional description..."></textarea>
-            <select name="todo-priority" id="todo-priority" required>
+            <input type="text" name="title" id="todo-form-title" placeholder="Name of todo" required>
+            <textarea name="desc" id="todo-form-desc" cols="30" rows="10" placeholder="Optional description..."></textarea>
+            <select name="priority" id="todo-priority" required>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
             </select>
+            <input type="date" name="due-date" required>
             <button type="submit" id="add-todo-btn" value="${projectName}">Create Todo</button>
         </form>
     `;
+    
+    const createTodoForm = document.getElementById("create-todo-form");
+    createTodoForm.addEventListener("submit", event => {
+        event.preventDefault();
+        createTodo(createTodoForm, projectName);
+    })
+
+    // TODO - PUT IN SEPARATE FUNCTION
     const createTodoBtn = document.getElementById("create-todo-btn");
     createTodoBtn.addEventListener("click", event => {
         event.preventDefault();
-        const form = document.getElementById("create-todo-form");
+        // const form = document.getElementById("create-todo-form");
         createTodoBtn.classList.toggle("hidden");
-        form.classList.toggle("hidden");
+        // form.classList.toggle("hidden");
+        createTodoForm.classList.toggle("hidden");
 
         // createTodo(formDetails);
     });

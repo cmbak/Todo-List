@@ -32,4 +32,8 @@ class Todo {
     // Will setters be used at any point?
 }
 
-export default Todo;
+export const createTodo = (form, projectName) => {
+    const formData = new FormData(form);
+    const todo = new Todo(formData.get('title'), formData.get('desc'), formData.get('due-date'), formData.get('priority'));
+    assignTodoToProject(todo, projectName);
+}
