@@ -21,7 +21,9 @@ export const createProject = projectName => {
 // Returns an array of the names of each project
 export const getProjects = () => {
     if (projectsExists()) {
-        return JSON.parse(localStorage.getItem("projects"));
+        const projects = JSON.parse(localStorage.getItem("projects"));
+        const projectNames = projects.map((proj) => proj.projectName);
+        return projectNames;
     }
 }
 
