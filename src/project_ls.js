@@ -68,17 +68,14 @@ export const assignTodoToProject = (todo, projectName) => {
 export const deleteTodo = (projectName, todoTitle) => {
     // Get the project with the name
     const projects = JSON.parse(localStorage.getItem("projects"));
-    let project;
 
     for (const proj of projects) {
         if (proj.projectName == projectName) {
-            project = proj;
-            break;
+            Project.removeTodo(proj, todoTitle);
+            updateProjectList(proj);
+            return;
         }
     }
-
-    Project.removeTodo(project, todoTitle);
-    updateProjectList(project);
 }
 
 // Updates lists of projects by changing project with updated one
