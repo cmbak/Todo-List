@@ -4,7 +4,7 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 button {
@@ -147,6 +147,13 @@ p {
 
 .todos {
     display: flex;
+}
+
+#create-todo-form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 1rem auto;
 }
 
 /* Todo Styling 
