@@ -19,9 +19,9 @@ const displayTodos = (projectName) => {
         const todoElement = document.createElement("div");
         todoElement.innerHTML = `
             <h3 class="todo-title">${todo.title}</h3>
-            <p class="todo-desc">${todo.description}</p> -->
+            <p class="todo-desc">${todo.description}</p>
         `;
-        // container.appendChild(todoElement);
+        container.appendChild(todoElement);
     })
 
 }
