@@ -155,6 +155,7 @@ const setActiveProject = (projectName, projectNameButton) => {
     projectNameButton.classList.toggle("active-project");
     addTodoFormsContainer(projectName);
     storeActiveProject(projectName);
+    displayTodos(projectName);
 }
 
 // Gets rid of the active project class from project buttons
