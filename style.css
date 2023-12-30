@@ -50,7 +50,7 @@ button {
     color: rgb(2, 65, 2);
 }
 
-#cancel, .delete-project-btn {
+#cancel, .delete-project-btn, .delete-todo-btn{
     background-color: rgb(235, 83, 83);
     color: rgb(52, 0, 0);
 }
