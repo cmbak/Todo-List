@@ -44,6 +44,11 @@ p {
     padding-top: 1rem;
 }
 
+#main-content-container {
+    display: grid;
+    grid-template-columns: 0.8fr 4fr;
+}
+
 /* Sidebar */
 .sidebar {
     padding-inline: 1rem;
