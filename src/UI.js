@@ -19,6 +19,8 @@ const displayTodos = (projectName) => {
     todos.forEach(todo => {
         const todoElement = document.createElement("div");
         const deleteTodoBtn = document.createElement("button");
+
+        todoElement.classList.add("todo-item");
         deleteTodoBtn.innerText = "Delete Project";
         deleteTodoBtn.classList.add("delete-todo-btn");
         deleteTodoBtn.addEventListener("click", () => {
@@ -212,11 +214,8 @@ const addTodoFormsContainer = (projectName) => {
     const createTodoBtn = document.getElementById("create-todo-btn");
     createTodoBtn.addEventListener("click", event => {
         event.preventDefault();
-        // const form = document.getElementById("create-todo-form");
         createTodoBtn.classList.toggle("hidden");
-        // form.classList.toggle("hidden");
         createTodoForm.classList.toggle("hidden");
-
         // createTodo(formDetails);
     });
 }
