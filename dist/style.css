@@ -12,6 +12,10 @@ button {
     padding: 0.3rem;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 /* Container Styling */
 .container {
     display: grid;

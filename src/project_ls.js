@@ -61,14 +61,34 @@ const getProjectWithName = (projectName) => {
 export const assignTodoToProject = (todo, projectName) => {
     const updatedProj = getProjectWithName(projectName);
     Project.addTodo(updatedProj, todo); 
+    updateProjectList(updatedProj);
+}
 
+// Deletes specific todo from specified project
+export const deleteTodo = (projectName, todoTitle) => {
+    // Get the project with the name
+    const projects = JSON.parse(localStorage.getItem("projects"));
+    let project;
+
+    for (const proj of projects) {
+        if (proj.projectName == projectName) {
+            project = proj;
+            break;
+        }
+    }
+
+    Project.removeTodo(project, todoTitle);
+    updateProjectList(project);
+}
+
+// Updates lists of projects by changing project with updated one
+const updateProjectList = (updatedProject) => {
     const projects = JSON.parse(localStorage.getItem("projects"));
 
     projects.forEach(proj => {
-        if (proj.projectName == projectName) {
-            projects[projects.indexOf(proj)] = updatedProj;
+        if (proj.projectName == updatedProject.projectName) {
+            projects[projects.indexOf(proj)] = updatedProject;
         }
     });
-
     localStorage.setItem("projects", JSON.stringify(projects));
 }

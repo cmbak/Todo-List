@@ -9,7 +9,7 @@ export class Project {
         proj.todos.push(todo);
     }
     // Removes a todo with a given name
-    static removeTodo = (proj, name) => {
-        proj.todos = proj.todos.filter((name) => name != todoName);
+    static removeTodo = (proj, todoName) => {
+        proj.todos = proj.todos.filter((todo) => todo.title != todoName);
     }
 }

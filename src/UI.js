@@ -1,4 +1,4 @@
-import { createProject, getProjects, projectsExists, checkIfProjectExists, deleteProject, storeActiveProject, getActiveProject } from "./project_ls";
+import { createProject, getProjects, projectsExists, checkIfProjectExists, deleteProject, storeActiveProject, getActiveProject, deleteTodo } from "./project_ls";
 import { createTodo } from "./todo";
 import { getProjectTodos } from "./todo_ls";
 
@@ -18,17 +18,22 @@ const displayTodos = (projectName) => {
 
     todos.forEach(todo => {
         const todoElement = document.createElement("div");
+        const deleteTodoBtn = document.createElement("button");
+        deleteTodoBtn.innerText = "Delete Project";
+        deleteTodoBtn.classList.add("delete-todo-btn");
+        deleteTodoBtn.addEventListener("click", () => {
+            deleteTodo(projectName, todo.title);
+            displayTodos(projectName);
+        });
+
         todoElement.innerHTML = `
             <h3 class="todo-title priority-${todo.priority}">${todo.title}</h3>
             <p class="todo-desc">${todo.description}</p>
             <p class="todo-date">Due: ${todo.dueDate}</p>
-            <form value=${todo.title}> 
-                <button class="delete-todo-btn">Delete Project</button>
-            </form>
         `;
+        todoElement.appendChild(deleteTodoBtn);
         container.appendChild(todoElement);
     })
-
 }
 
 // Used on first reload to add the projects to the sidebar
