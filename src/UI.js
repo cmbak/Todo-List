@@ -18,7 +18,7 @@ const displayTodos = (projectName) => {
     todos.forEach(todo => {
         const todoElement = document.createElement("div");
         todoElement.innerHTML = `
-            <h3 class="todo-title">${todo.title}</h3>
+            <h3 class="todo-title priority-${todo.priority}">${todo.title}</h3>
             <p class="todo-desc">${todo.description}</p>
             <p class="todo-date">Due: ${todo.dueDate}</p>
         `;

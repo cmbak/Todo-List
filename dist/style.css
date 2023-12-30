@@ -121,3 +121,15 @@ button {
     font-style: italic;
     font-size: 0.9rem;
 }
+
+.priority-low {
+    color: green;
+}
+
+.priority-medium {
+    color: orange;
+}
+
+.priority-high {
+    color: red;
+}
