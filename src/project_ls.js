@@ -57,10 +57,18 @@ const getProjectWithName = (projectName) => {
     return projects.find((proj) => proj.projectName == projectName);
 }
 
-// Assigns a todo to a project - given that project exists
+// Assigns a todo to a project - given that project exists - and updates local storage
 export const assignTodoToProject = (todo, projectName) => {
-    // get the project with the name project name
-    // and update todo
-    const project = getProjectWithName(projectName);
-    project.addTodo(todo)
+    const updatedProj = getProjectWithName(projectName);
+    Project.addTodo(updatedProj, todo); 
+
+    const projects = JSON.parse(localStorage.getItem("projects"));
+
+    projects.forEach(proj => {
+        if (proj.projectName == projectName) {
+            projects[projects.indexOf(proj)] = updatedProj;
+        }
+    });
+
+    localStorage.setItem("projects", JSON.stringify(projects));
 }

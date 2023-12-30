@@ -4,23 +4,12 @@ export class Project {
         this.todos = [];
     }
 
-    getProjectName() {
-        return this.projectName;
+    // Adds a todo to the project
+    static addTodo = (proj, todo) => {
+        proj.todos.push(todo);
     }
-
-    getTodos() {
-        return this.todos;
-    }
-
-    // Adds a todo
-    addTodo(todo) {
-        this.todos.push(todo);
-        // should this return todos?
-    }
-
     // Removes a todo with a given name
-    removeTodo(todoName) {
-        this.todos = this.todos.filter((name) => name != todoName);
-        // should this return todos?
+    static removeTodo = (proj, name) => {
+        proj.todos = proj.todos.filter((name) => name != todoName);
     }
 }
