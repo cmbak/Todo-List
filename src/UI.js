@@ -1,5 +1,6 @@
 import { createProject, getProjects, projectsExists, checkIfProjectExists, deleteProject, storeActiveProject, getActiveProject } from "./project_ls";
 import { createTodo } from "./todo";
+import { getProjectTodos } from "./todo_ls";
 
 //
 //  put event listeners here or?
@@ -9,6 +10,21 @@ import { createTodo } from "./todo";
 
 
 // Should there be a main set project function or?
+
+const displayTodos = (projectName) => {
+    const todos = getProjectTodos(projectName);
+    const container = document.getElementById("todos");
+
+    todos.forEach(todo => {
+        const todoElement = document.createElement("div");
+        todoElement.innerHTML = `
+            <h3 class="todo-title">${todo.title}</h3>
+            <p class="todo-desc">${todo.description}</p> -->
+        `;
+        // container.appendChild(todoElement);
+    })
+
+}
 
 // Used on first reload to add the projects to the sidebar
 export const displayStoredProjects = () => {
@@ -91,6 +107,7 @@ const addProjectToTab = projectName => {
 
     if (projectName == getActiveProject()) {
         setActiveProject(projectName, projectNameButton);
+        displayTodos(projectName);
     }
     projectNameButton.classList.add("project-name-btn");
     projectNameButton.addEventListener("click", () => setActiveProject(projectName, projectNameButton));
@@ -151,7 +168,11 @@ const clearActiveProjects = () => {
 // TODO - ADD LABELS
 const addTodoFormsContainer = (projectName) => {
     const todoContainer = document.getElementById("todo-container");
+
     todoContainer.innerHTML = `
+        <div id="todos">
+
+        </div>
         <button id="create-todo-btn">Create Todo</button>
         <form id="create-todo-form" class="hidden">
             <input type="text" name="title" id="todo-form-title" placeholder="Name of todo" required>
