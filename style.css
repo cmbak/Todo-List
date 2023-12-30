@@ -105,13 +105,14 @@ p {
 
 /* Todo Container */
 #todo-container {
+    padding: 1rem 2rem;
     border: 3px solid blue;
     background-color: rgb(91, 25, 146);
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     /* gap: 1rem; */
 }
 
-.todo-item {
+.todos {
     display: flex;
 }
 
