@@ -23,21 +23,25 @@ p {
 
 /* Container Styling */
 .container {
-    display: grid;
+    /* display: grid; */
     grid-template-columns: 0.75fr 4fr;
     grid-template-rows: min-content 85vh;
 }
 
 /* Nav */
 .nav {
+    align-items: center;
+    height: 12vh;
     color: white;
     grid-column: 1 / 3;
     background-color: rgb(111, 22, 183);
 }
 
 #title {
+    margin: 0;
     font-size: 2.5rem;
     text-align: center;
+    padding-top: 1rem;
 }
 
 /* Sidebar */
