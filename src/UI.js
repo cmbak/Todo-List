@@ -22,6 +22,9 @@ const displayTodos = (projectName) => {
             <h3 class="todo-title priority-${todo.priority}">${todo.title}</h3>
             <p class="todo-desc">${todo.description}</p>
             <p class="todo-date">Due: ${todo.dueDate}</p>
+            <form value=${todo.title}> 
+                <button class="delete-todo-btn">Delete Project</button>
+            </form>
         `;
         container.appendChild(todoElement);
     })
