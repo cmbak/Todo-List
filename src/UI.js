@@ -14,6 +14,7 @@ import { getProjectTodos } from "./todo_ls";
 const displayTodos = (projectName) => {
     const todos = getProjectTodos(projectName);
     const container = document.getElementById("todos");
+    container.innerHTML = "";
 
     todos.forEach(todo => {
         const todoElement = document.createElement("div");
@@ -193,6 +194,7 @@ const addTodoFormsContainer = (projectName) => {
     createTodoForm.addEventListener("submit", event => {
         event.preventDefault();
         createTodo(createTodoForm, projectName);
+        displayTodos(projectName);
     })
 
     // TODO - PUT IN SEPARATE FUNCTION
