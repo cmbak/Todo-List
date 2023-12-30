@@ -1,7 +1,7 @@
-import { createProject, getProjects, projectsExists, checkIfProjectExists, deleteProject, storeActiveProject, getActiveProject, deleteTodo } from "./project_ls";
+import { createProject, getProjects, projectsExists, checkIfProjectExists, deleteProject, storeActiveProject, getActiveProject, deleteTodo, getProjectWithName } from "./project_ls";
 import { createTodo } from "./todo";
 import { getProjectTodos } from "./todo_ls";
-
+import { Project } from "./project";
 //
 //  put event listeners here or?
 //
@@ -101,7 +101,6 @@ addProjectBtn.addEventListener("click", () => {
     toggleBtnFormVisibility();
     createProject(projectName);
     addProjectToTab(projectName);
-    // updateProjectsList();
 });
 
 // Project tab functionality
@@ -117,7 +116,6 @@ const addProjectToTab = projectName => {
 
     if (projectName == getActiveProject()) {
         setActiveProject(projectName, projectNameButton);
-        // displayTodos(projectName);
     }
     projectNameButton.classList.add("project-name-btn");
     projectNameButton.addEventListener("click", () => setActiveProject(projectName, projectNameButton));
@@ -201,6 +199,10 @@ const addTodoFormsContainer = (projectName) => {
     const createTodoForm = document.getElementById("create-todo-form");
     createTodoForm.addEventListener("submit", event => {
         event.preventDefault();
+        if (Project.todoExists(getProjectWithName(projectName), new FormData(createTodoForm).get("title"))) {
+            alert("Sorry, a todo with this name already exists!");
+            return false;
+        }
         createTodo(createTodoForm, projectName);
         displayTodos(projectName);
         createTodoForm.reset();

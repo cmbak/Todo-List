@@ -12,4 +12,14 @@ export class Project {
     static removeTodo = (proj, todoName) => {
         proj.todos = proj.todos.filter((todo) => todo.title != todoName);
     }
+
+    // Returns true/false depending on if a todo already exists with the same name
+    static todoExists = (proj, todoName) => {
+        for(const todo of proj.todos) {
+            if (todo.title == todoName) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

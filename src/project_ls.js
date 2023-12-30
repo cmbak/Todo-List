@@ -52,7 +52,7 @@ export const getActiveProject = () => {
 }
 
 // Gets a project with the given name
-const getProjectWithName = (projectName) => {
+export const getProjectWithName = (projectName) => {
     const projects = JSON.parse(localStorage.getItem("projects"));
     return projects.find((proj) => proj.projectName == projectName);
 }
