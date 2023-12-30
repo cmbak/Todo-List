@@ -34,7 +34,7 @@ p {
     height: 12vh;
     color: white;
     grid-column: 1 / 3;
-    background-color: rgb(111, 22, 183);
+    background-color: rgb(91, 25, 146);
 }
 
 #title {
@@ -46,7 +46,7 @@ p {
 
 #main-content-container {
     height: 100%;
-    background-color: rgb(91, 25, 146);
+    background-color: rgb(111, 22, 183);
     display: grid;
     grid-template-columns: 0.8fr 4fr;
 }
