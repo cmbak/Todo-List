@@ -8,7 +8,7 @@ body {
 }
 
 button {
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 0.5rem;
     padding: 0.3rem;
 }
@@ -62,8 +62,14 @@ p {
     text-align: center;
 }
 
-/* #add-project-form {
-} */
+/* Add project form */
+
+#project-input {
+    margin-bottom: 1rem;
+    padding: 0.6rem;
+    border-radius: 0.7rem;
+    border: 1px solid rgb(156, 156, 156);
+}
 
 #add-project-btn {
     background-color: rgb(126, 211, 126);
@@ -108,6 +114,12 @@ p {
 .active-project {
     font-weight: bold;
     color: rgb(84, 9, 84);
+}
+
+#add-project-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 /* .delete-project-btn {
