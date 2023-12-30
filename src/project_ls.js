@@ -66,7 +66,6 @@ export const assignTodoToProject = (todo, projectName) => {
 
 // Deletes specific todo from specified project
 export const deleteTodo = (projectName, todoTitle) => {
-    // Get the project with the name
     const projects = JSON.parse(localStorage.getItem("projects"));
 
     for (const proj of projects) {

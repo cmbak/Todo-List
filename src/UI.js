@@ -203,6 +203,7 @@ const addTodoFormsContainer = (projectName) => {
         event.preventDefault();
         createTodo(createTodoForm, projectName);
         displayTodos(projectName);
+        createTodoForm.reset();
     })
 
     // TODO - PUT IN SEPARATE FUNCTION
