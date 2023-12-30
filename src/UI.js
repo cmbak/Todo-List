@@ -20,6 +20,7 @@ const displayTodos = (projectName) => {
         todoElement.innerHTML = `
             <h3 class="todo-title">${todo.title}</h3>
             <p class="todo-desc">${todo.description}</p>
+            <p class="todo-date">Due: ${todo.dueDate}</p>
         `;
         container.appendChild(todoElement);
     })
@@ -107,7 +108,7 @@ const addProjectToTab = projectName => {
 
     if (projectName == getActiveProject()) {
         setActiveProject(projectName, projectNameButton);
-        displayTodos(projectName);
+        // displayTodos(projectName);
     }
     projectNameButton.classList.add("project-name-btn");
     projectNameButton.addEventListener("click", () => setActiveProject(projectName, projectNameButton));
