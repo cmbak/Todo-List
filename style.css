@@ -116,3 +116,8 @@ button {
 .todo-desc {
     color: rgb(75, 75, 75);
 }
+
+.todo-date {
+    font-style: italic;
+    font-size: 0.9rem;
+}
