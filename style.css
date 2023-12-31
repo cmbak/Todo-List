@@ -171,9 +171,9 @@ p {
     width: 40%;
     margin: 1rem auto;
     gap: 1rem;
-    background-color: rgb(85, 44, 161);
-    padding: 1rem;
-    border-radius: 4%;
+    background-color: rgb(238, 148, 30);
+    padding: 1.4rem;
+    border-radius: 6%;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
@@ -184,14 +184,7 @@ p {
 }
 
 /* Todo Styling 
-    FIXME IS THERE ANYTHING WITH THIS CLASS?
 */
-.todo {
-    border: 3px solid gold;
-    padding: 1rem;
-    margin: 1rem;
-    /* Want these to be square in future */
-}
 
 .todo-title {
     font-size: 1.75rem;
@@ -242,5 +235,9 @@ p {
 
     .project-container, #projects, .sidebar {
         justify-content: center;
+    }
+
+    #create-todo-form {
+        width: 70%;
     }
 }
