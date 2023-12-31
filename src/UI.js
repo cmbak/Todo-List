@@ -73,8 +73,6 @@ createProjectBtn.addEventListener("click", (event) => {
     toggleBtnFormVisibility();
 });
 
-
-// FIXME DOES THIS NEED TO BE A SEPARATE FN?
 // Display the form for creating a project 
 export const toggleCreateProject = () => {
     createProjectBtn.classList.toggle("hidden");
@@ -146,9 +144,8 @@ const createDeleteProjectForm = (projectName) => {
     deleteBtn.addEventListener("click", event => {
         event.preventDefault();
         deleteProject(projectName);
-        // TODO - DISPLAY PREV PROJECT IN ARRAY IF PROJECTS OR EMPTY PROJECT PAGE WHEN DELETE
-        // TODO - HOST
-        displayTodos("");
+        clearActiveProjects();
+        document.getElementById("todo-container").innerHTML = "";
         displayStoredProjects();
     });
     return form;
@@ -176,9 +173,7 @@ const addTodoFormsContainer = (projectName) => {
     const todoContainer = document.getElementById("todo-container");
 
     todoContainer.innerHTML = `
-        <div id="todos">
-
-        </div>
+        <div id="todos"></div>
         <button id="create-todo-btn">Create Todo</button>
         <form id="create-todo-form" class="hidden">
             <label for="todo-form-title">Todo Name</label>
@@ -215,7 +210,6 @@ const addTodoFormsContainer = (projectName) => {
     document.getElementById("create-todo-btn").addEventListener("click", event => {
         event.preventDefault();
         toggleCreateTodoForm();
-        // createTodo(formDetails);
     });
 
     document.getElementById("add-todo-cancel-btn").addEventListener("click", event => {
