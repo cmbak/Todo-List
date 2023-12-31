@@ -2,15 +2,39 @@ import { createProject, getProjects, projectsExists, checkIfProjectExists, delet
 import { createTodo } from "./todo";
 import { getProjectTodos } from "./todo_ls";
 import { Project } from "./project";
-//
-//  put event listeners here or?
-//
-//
-//
 
 
-// Should there be a main set project function or?
+// EVENT LISTENERS
+// Cancel project btn
+const cancelBtn = document.getElementById("cancel");
+cancelBtn.addEventListener("click", toggleBtnFormVisibility);
 
+// Create project btn
+const createProjectBtn = document.getElementById("create-project-btn");
+createProjectBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    toggleBtnFormVisibility();
+});
+
+// Add project button functionality
+const addProjectBtn = document.getElementById("add-project-btn");
+addProjectBtn.addEventListener("click", () => {
+    const projectName = document.getElementById("project-input").value;
+    if (projectName == "") {
+        alert("Sorry, please enter a valid project name");
+        return false;
+    } else if (checkIfProjectExists(projectName)) {
+        alert("Sorry, a project with that name already exists!");
+        return false;
+    }
+    toggleBtnFormVisibility();
+    createProject(projectName);
+    addProjectToTab(projectName);
+});
+
+// ================================
+
+// Displays the todos for the specified project
 const displayTodos = (projectName) => {
     const todos = getProjectTodos(projectName);
     const container = document.getElementById("todos");
@@ -67,12 +91,6 @@ function toggleBtnFormVisibility() {
 
 // Create project button events
 
-const createProjectBtn = document.getElementById("create-project-btn");
-createProjectBtn.addEventListener("click", (event) => {
-    event.preventDefault();
-    toggleBtnFormVisibility();
-});
-
 // Display the form for creating a project 
 export const toggleCreateProject = () => {
     createProjectBtn.classList.toggle("hidden");
@@ -85,26 +103,6 @@ export const displayProjectForm = () => { // TODO rename to toggle
     // Make sure input is empty once hidden
     document.getElementById("project-input").value = "";
 };
-
-// Cancel project btn
-const cancelBtn = document.getElementById("cancel");
-cancelBtn.addEventListener("click", toggleBtnFormVisibility);
-
-// Add project button functionality
-const addProjectBtn = document.getElementById("add-project-btn");
-addProjectBtn.addEventListener("click", () => {
-    const projectName = document.getElementById("project-input").value;
-    if (projectName == "") {
-        alert("Sorry, please enter a valid project name");
-        return false;
-    } else if (checkIfProjectExists(projectName)) {
-        alert("Sorry, a project with that name already exists!");
-        return false;
-    }
-    toggleBtnFormVisibility();
-    createProject(projectName);
-    addProjectToTab(projectName);
-});
 
 // Project tab functionality
 
