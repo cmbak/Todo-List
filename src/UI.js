@@ -146,21 +146,13 @@ const createDeleteProjectForm = (projectName) => {
     deleteBtn.addEventListener("click", event => {
         event.preventDefault();
         deleteProject(projectName);
+        // TODO - DISPLAY PREV PROJECT IN ARRAY IF PROJECTS OR EMPTY PROJECT PAGE WHEN DELETE
+        // TODO - HOST
+        displayTodos("");
         displayStoredProjects();
     });
     return form;
 }
-
-// Create todo btn functionality
-// const createTodoBtn = document.getElementById("create-todo-btn");
-// createTodoBtn.addEventListener("click", event => {
-//     event.preventDefault();
-//     const form = document.getElementById("create-todo-form");
-//     createTodoBtn.classList.toggle("hidden");
-//     form.classList.toggle("hidden");
-
-//     // createTodo(formDetails);
-// })
 
 // should set value of submit to current active project
 const setActiveProject = (projectName, projectNameButton) => {
@@ -216,6 +208,7 @@ const addTodoFormsContainer = (projectName) => {
         createTodo(createTodoForm, projectName);
         displayTodos(projectName);
         createTodoForm.reset();
+        toggleCreateTodoForm();
     })
 
     // TODO - PUT IN SEPARATE FUNCTION
