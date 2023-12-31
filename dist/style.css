@@ -31,6 +31,8 @@ p {
 
 /* Nav */
 .nav {
+    display: flex;
+    justify-content: center;
     align-items: center;
     height: 12vh;
     color: white;
@@ -228,12 +230,16 @@ p {
 
 /* Media Queries */
 @media only screen and (max-width: 768px) {
-    #main-content-container, #projects, #add-project-form {
+    #main-content-container, #projects, #add-project-form, .sidebar {
         display: flex;
         flex-direction: column;
     }
 
-    .project-container, #projects {
+    .project-container, #projects, .sidebar {
         justify-content: center;
+    }
+
+    #project-list {
+        padding: 0;
     }
 }
