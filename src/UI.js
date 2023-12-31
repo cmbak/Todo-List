@@ -186,14 +186,18 @@ const addTodoFormsContainer = (projectName) => {
         </div>
         <button id="create-todo-btn">Create Todo</button>
         <form id="create-todo-form" class="hidden">
+            <label for="todo-form-title">Todo Name</label>
             <input type="text" name="title" id="todo-form-title" placeholder="Name of todo" required>
+            <label for="todo-form-desc">Description</label>
             <textarea name="desc" id="todo-form-desc" cols="30" rows="10" placeholder="Optional description..."></textarea>
+            <label for="todo-priority">Priority</label>
             <select name="priority" id="todo-priority" required>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
             </select>
-            <input type="date" name="due-date" required>
+            <label for="todo-date-input">Due Date</label>
+            <input type="date" name="due-date" id="todo-date-input" required>
             <button type="submit" id="add-todo-btn" value="${projectName}">Create Todo</button>
             <button id="add-todo-cancel-btn" class="delete-todo-btn">Cancel</button>
         </form>

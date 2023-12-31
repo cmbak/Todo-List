@@ -150,6 +150,10 @@ p {
 }
 
 #create-todo-form {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
     display: flex;
     flex-direction: column;
     width: 40%;
