@@ -195,6 +195,7 @@ const addTodoFormsContainer = (projectName) => {
             </select>
             <input type="date" name="due-date" required>
             <button type="submit" id="add-todo-btn" value="${projectName}">Create Todo</button>
+            <button id="add-todo-cancel-btn" class="delete-todo-btn">Cancel</button>
         </form>
     `;
     
@@ -211,11 +212,21 @@ const addTodoFormsContainer = (projectName) => {
     })
 
     // TODO - PUT IN SEPARATE FUNCTION
-    const createTodoBtn = document.getElementById("create-todo-btn");
-    createTodoBtn.addEventListener("click", event => {
+    document.getElementById("create-todo-btn").addEventListener("click", event => {
         event.preventDefault();
-        createTodoBtn.classList.toggle("hidden");
-        createTodoForm.classList.toggle("hidden");
+        toggleCreateTodoForm();
         // createTodo(formDetails);
     });
+
+    document.getElementById("add-todo-cancel-btn").addEventListener("click", event => {
+        event.preventDefault();
+        toggleCreateTodoForm();
+    });
+}
+
+const toggleCreateTodoForm = () => {
+    const createTodoBtn = document.getElementById("create-todo-btn");
+    const createTodoForm = document.getElementById("create-todo-form");
+    createTodoBtn.classList.toggle("hidden");
+    createTodoForm.classList.toggle("hidden");
 }
