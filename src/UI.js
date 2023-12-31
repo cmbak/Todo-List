@@ -68,7 +68,10 @@ function toggleBtnFormVisibility() {
 // Create project button events
 
 const createProjectBtn = document.getElementById("create-project-btn");
-createProjectBtn.addEventListener("click", toggleBtnFormVisibility)
+createProjectBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    toggleBtnFormVisibility();
+});
 
 
 // FIXME DOES THIS NEED TO BE A SEPARATE FN?

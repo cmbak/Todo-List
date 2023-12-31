@@ -124,6 +124,11 @@ p {
     gap: 0.5rem;
 }
 
+#create-project-form {
+    display: flex;
+    justify-content: center;
+}
+
 /* .delete-project-btn {
     /* height: 100%;
     align-items: baseline; */
@@ -141,7 +146,7 @@ p {
 }
 
 #create-todo-btn {
-    width: 15%;
+    width: 25%;
     margin-inline: auto;
 }
 
@@ -219,4 +224,16 @@ p {
 
 .todo-item:hover {
     transform: scale(1.03);
+}
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+    #main-content-container, #projects, #add-project-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-container, #projects {
+        justify-content: center;
+    }
 }
