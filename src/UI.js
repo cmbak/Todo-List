@@ -168,7 +168,6 @@ const clearActiveProjects = () => {
 }
 
 // Adds the create todo forms to the todo container
-// TODO - ADD LABELS
 const addTodoFormsContainer = (projectName) => {
     const todoContainer = document.getElementById("todo-container");
 
