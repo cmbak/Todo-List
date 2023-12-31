@@ -45,7 +45,7 @@ const displayTodos = (projectName) => {
         const deleteTodoBtn = document.createElement("button");
 
         todoElement.classList.add("todo-item");
-        deleteTodoBtn.innerText = "Delete Project";
+        deleteTodoBtn.innerText = "Delete Todo";
         deleteTodoBtn.classList.add("delete-todo-btn");
         deleteTodoBtn.addEventListener("click", () => {
             deleteTodo(projectName, todo.title);
