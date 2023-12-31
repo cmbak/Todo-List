@@ -8,7 +8,7 @@ body {
 }
 
 button {
-    border: 1px solid black;
+    border: 0.5px solid rgba(0, 0, 0, 0.317);
     border-radius: 0.7rem;
     padding: 0.5rem;
     background-color: white;
@@ -80,7 +80,7 @@ p {
 
 #cancel, .delete-project-btn, .delete-todo-btn{
     background-color: rgb(235, 83, 83);
-    color: rgb(52, 0, 0);
+    color: rgb(87, 0, 0);
 }
 
 #project-list {
